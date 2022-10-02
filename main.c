@@ -1,17 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include<time.h>
+
 int main() {
     
     int hour,minute,second;
     int d=1000;
-    printf("Set time : \n");
-    printf("Put in the hour: ");
-    scanf("%d",&hour);
-    printf("Put in the minute: ");
-    scanf("%d",&minute);
-    printf("Put in the second: ");
-    scanf("%d",&second);
-  
+    
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    
+    hour = tm.tm_hour;
+    minute = tm.tm_min;
+    second = tm.tm_sec;
+    
     
     if(hour>12 || minute>60 || second>60) {
         printf("Error !\n");
